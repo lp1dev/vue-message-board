@@ -1,6 +1,7 @@
 <template>
   <div id="message-input">
-    <textarea v-model="message" placeholder="What's on your mind ?"/><br/>
+    <textarea :class="{'valid': is_valid}" @input="onInput"
+    v-model="message" placeholder="What's on your mind ?"/><br/>
     <button @click="sendMessage">Twitt</button>
   </div>
 </template>
@@ -11,7 +12,8 @@ export default {
   name: 'MessageInput',
   data () {
     return {
-      message: ''
+      message: '',
+      is_valid: false
     }
   },
   methods: {
@@ -26,6 +28,10 @@ export default {
             console.log(error)
           })
       }
+    },
+    onInput () {
+      console.log(this.message)
+      this.is_valid = (!this.message || !this.message.length)
     }
   }
 }
@@ -33,6 +39,9 @@ export default {
 <style>
 #message-input {
   text-align: center;
+}
+.valid {
+  border: 1px solid red;
 }
 button {
   margin: 1vh;

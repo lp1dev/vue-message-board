@@ -1,3 +1,4 @@
+
 <template>
  <div class="footer">
    <slot></slot>
@@ -15,7 +16,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .footer {
   padding: 2vh;
   height: 10vh;

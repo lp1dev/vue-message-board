@@ -1,3 +1,18 @@
+<style scoped>
+.header {
+  padding: 1vh;
+  height: 4vh;
+  border-bottom: 1px solid black;
+}
+#user-avatar {
+  height: 30px;
+  border: 1px solid grey;
+  border-radius: 50%;
+}
+#user-area {
+  float: right;
+}
+</style>
 <template>
    <div class="header">
       <span id="logo"><router-link to="/">TwittTwitt</router-link></span>
@@ -25,18 +40,4 @@ export default {
   }
 }
 </script>
-<style>
-.header {
-  padding: 1vh;
-  height: 4vh;
-  border-bottom: 1px solid black;
-}
-#user-avatar {
-  height: 30px;
-  border: 1px solid grey;
-  border-radius: 50%;
-}
-#user-area {
-  float: right;
-}
-</style>
+

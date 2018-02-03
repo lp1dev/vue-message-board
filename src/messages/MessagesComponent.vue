@@ -2,9 +2,9 @@
   <div id="messages">
     <message-input v-if="state.logged" @refresh="loadMessages"/>
     <div v-if="!messages.length">Loading...</div>
-    <message v-for="(message, index) in reversedMessages"
-    @click.native="openMessage(index)"
-    :key="message.id" v-bind:message="message"/>
+    <message
+    v-for="(message, index) in reversedMessages"
+    :key="message.id" :message="message" :id="messages.length - index - 1"/>
   </div>
 </template>
 
@@ -13,9 +13,17 @@ import Message from './MessageComponent'
 import MessageInput from './MessageInput'
 import HTTP from '../shared/http'
 
+const AnnoyingMixin = {
+  created () {
+    console.log(this)
+    console.log(`${this} created`)
+  }
+}
+
 export default {
   name: 'Messages',
   components: { Message, MessageInput },
+  mixins: [ AnnoyingMixin ],
   data () {
     return {
       messages: [],
@@ -30,11 +38,6 @@ export default {
           this.messages = response.data
         })
         .catch((error) => console.error(error))
-    },
-    openMessage (id) {
-      console.log('opening message', id)
-      this.$router.push('/messages/' + this.messages.length - id - 1)
-      this.$router.go(1)
     }
   },
   computed: {
