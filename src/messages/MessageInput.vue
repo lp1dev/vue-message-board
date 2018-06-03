@@ -1,7 +1,7 @@
 <template>
   <div id="message-input">
     <textarea :class="{'valid': is_valid}" @input="onInput"
-    v-model="message" placeholder="What's on your mind ?"/><br/>
+      v-model="message" placeholder="What's on your mind ?"/><br/>
     <button @click="sendMessage">Twitt</button>
   </div>
 </template>
